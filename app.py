@@ -2,6 +2,7 @@ __version__ = "1.1.3"
 
 import html
 import os
+from urllib.parse import urlparse
 
 from dotenv import load_dotenv
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -18,6 +19,8 @@ def normalize_path(value, default=""):
     value = (value or default).strip()
     if value in ("", "/", "NONE"):
         return ""
+    if "://" in value or value.startswith("//"):
+        value = urlparse(value, scheme="http").path
     return "/" + value.strip("/")
 
 
@@ -119,8 +122,6 @@ async def get_logs_file(request, key):
 
 
 app.add_route(index, join_url_paths(base_url), methods=["GET"])
-if base_url:
-    app.add_route(index, base_url + "/", methods=["GET"])
 app.add_route(get_raw_logs_file, join_url_paths(base_url, prefix, "raw/<key>"), methods=["GET"])
 app.add_route(get_logs_file, join_url_paths(base_url, prefix, "<key>"), methods=["GET"])
 
