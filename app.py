@@ -13,14 +13,27 @@ from core.models import LogEntry
 
 load_dotenv()
 
+
+def normalize_path(value, default=""):
+    value = (value or default).strip()
+    if value in ("", "/", "NONE"):
+        return ""
+    return "/" + value.strip("/")
+
+
+def join_url_paths(*parts):
+    path = "/".join(str(part).strip("/") for part in parts if str(part).strip("/"))
+    return "/" + path if path else "/"
+
+
 if "URL_PREFIX" in os.environ:
     print("Using the legacy config var `URL_PREFIX`, rename it to `LOG_URL_PREFIX`")
     prefix = os.environ["URL_PREFIX"]
 else:
     prefix = os.getenv("LOG_URL_PREFIX", "/logs")
 
-if prefix == "NONE":
-    prefix = ""
+prefix = normalize_path(prefix)
+base_url = normalize_path(os.getenv("BASE_URL") or os.getenv("BASE_PATH"))
 
 MONGO_URI = os.getenv("MONGO_URI") or os.getenv("CONNECTION_URI")
 if not MONGO_URI:
@@ -29,9 +42,10 @@ if not MONGO_URI:
     exit(1)
 
 app = Sanic(__name__)
-app.static("/static", "./static")
+app.static(join_url_paths(base_url, "static"), "./static")
 
 jinja_env = Environment(loader=FileSystemLoader("templates"))
+jinja_env.globals["base_url"] = base_url
 
 
 def render_template(name, *args, **kwargs):
@@ -76,12 +90,10 @@ async def not_found(request, exc):
     return render_template("not_found")
 
 
-@app.get("/")
 async def index(request):
     return render_template("index")
 
 
-@app.get(prefix + "/raw/<key>")
 async def get_raw_logs_file(request, key):
     """Returns the plain text rendered log entry"""
     document = await app.ctx.db.logs.find_one({"key": key})
@@ -94,7 +106,6 @@ async def get_raw_logs_file(request, key):
     return log_entry.render_plain_text()
 
 
-@app.get(prefix + "/<key>")
 async def get_logs_file(request, key):
     """Returns the html rendered log entry"""
     document = await app.ctx.db.logs.find_one({"key": key})
@@ -105,6 +116,13 @@ async def get_logs_file(request, key):
     log_entry = LogEntry(app, document)
 
     return log_entry.render_html()
+
+
+app.add_route(index, join_url_paths(base_url), methods=["GET"])
+if base_url:
+    app.add_route(index, base_url + "/", methods=["GET"])
+app.add_route(get_raw_logs_file, join_url_paths(base_url, prefix, "raw/<key>"), methods=["GET"])
+app.add_route(get_logs_file, join_url_paths(base_url, prefix, "<key>"), methods=["GET"])
 
 
 if __name__ == "__main__":
