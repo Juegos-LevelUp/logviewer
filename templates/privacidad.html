@@ -1,0 +1,360 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Política de Privacidad | ModMail</title>
+
+<meta name="description" content="Política de Privacidad de los bots ModMail para Discord.">
+
+<style>
+
+:root{
+    --bg:#f5f7fa;
+    --card:#ffffff;
+    --text:#222;
+    --muted:#666;
+    --border:#e4e7eb;
+    --accent:#5865F2;
+}
+
+@media(prefers-color-scheme:dark){
+
+:root{
+    --bg:#0d1117;
+    --card:#161b22;
+    --text:#e6edf3;
+    --muted:#9ca3af;
+    --border:#30363d;
+}
+
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:var(--bg);
+    color:var(--text);
+
+    font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+    line-height:1.8;
+
+}
+
+.container{
+
+    width:min(900px,92%);
+    margin:auto;
+    padding:60px 0;
+
+}
+
+.card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:48px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.08);
+
+}
+
+h1{
+
+    font-size:2.4rem;
+
+    margin-bottom:10px;
+
+}
+
+.subtitle{
+
+    color:var(--muted);
+
+    margin-bottom:40px;
+
+}
+
+h2{
+
+    margin-top:42px;
+
+    margin-bottom:16px;
+
+    font-size:1.45rem;
+
+}
+
+p{
+
+    margin-bottom:18px;
+
+}
+
+ul{
+
+    margin-left:22px;
+
+    margin-bottom:18px;
+
+}
+
+li{
+
+    margin:8px 0;
+
+}
+
+code{
+
+    background:rgba(88,101,242,.12);
+
+    padding:2px 6px;
+
+    border-radius:6px;
+
+}
+
+a{
+
+    color:var(--accent);
+
+    text-decoration:none;
+
+}
+
+footer{
+
+    margin-top:50px;
+
+    padding-top:25px;
+
+    border-top:1px solid var(--border);
+
+    color:var(--muted);
+
+    font-size:.95rem;
+
+}
+
+@media(max-width:700px){
+
+.card{
+
+padding:30px 22px;
+
+}
+
+h1{
+
+font-size:2rem;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1>Política de Privacidad</h1>
+
+<p class="subtitle">
+Última actualización: <strong>6 de julio de 2026</strong>
+</p>
+
+<p>
+Esta Política de Privacidad describe cómo los bots de Discord <strong>ModMail #7613</strong> (ID de aplicación: 1445776067771236413) y <strong>Modmail #8042</strong> (ID de aplicación: 1356104496924590303) recopilan, utilizan, almacenan y protegen la información generada durante su uso dentro de servidores de Discord.
+</p>
+
+<p>
+Al utilizar cualquiera de estos bots, los administradores de servidores y sus usuarios aceptan las prácticas descritas en esta Política de Privacidad.
+</p>
+
+<h2>1. Información que recopilamos</h2>
+
+<p>Los bots recopilan únicamente la información necesaria para proporcionar sus funciones de soporte, moderación y gestión de tickets.</p>
+
+<p>Dependiendo del uso que cada servidor haga del bot, se podrá almacenar la siguiente información:</p>
+
+<ul>
+<li>ID de usuario de Discord.</li>
+<li>Mensajes enviados dentro de los tickets.</li>
+<li>Archivos adjuntos compartidos durante los tickets.</li>
+<li>Registros (logs) de los tickets.</li>
+<li>Información relacionada con el ticket, como fechas de creación, cierre y estado.</li>
+</ul>
+
+<p>Los bots no recopilan automáticamente direcciones IP, contraseñas de Discord, información de pago ni datos personales fuera de la plataforma de Discord.</p>
+
+<h2>2. Información solicitada por los moderadores</h2>
+
+<p>
+Durante la atención de un ticket, los moderadores de un servidor podrán solicitar información adicional al usuario cuando sea necesaria para verificar su identidad, validar su participación en un programa o resolver una solicitud específica.
+</p>
+
+<p>
+Estas solicitudes son realizadas exclusivamente por el equipo de moderación del servidor correspondiente y no forman parte del funcionamiento obligatorio del bot.
+</p>
+
+<p>
+El usuario podrá decidir si proporciona dicha información, salvo que el propio servidor establezca determinados requisitos para acceder a alguno de sus servicios o programas.
+</p>
+
+<h2>3. Finalidad del tratamiento de la información</h2>
+
+<ul>
+<li>Crear y administrar tickets de soporte.</li>
+<li>Facilitar la comunicación entre usuarios y moderadores.</li>
+<li>Mantener un historial de las conversaciones.</li>
+<li>Generar registros de moderación.</li>
+<li>Almacenar archivos compartidos dentro de los tickets.</li>
+<li>Resolver incidencias, consultas o procesos de moderación.</li>
+</ul>
+
+<p>La información almacenada no se vende, comparte con fines comerciales ni se utiliza para publicidad.</p>
+
+<h2>4. Almacenamiento de la información</h2>
+
+<p>
+La información de los tickets se almacena en una base de datos MongoDB.
+</p>
+
+<p>
+Los archivos adjuntos enviados durante los tickets pueden almacenarse mediante Cloudflare R2 con el único propósito de conservar el historial completo de cada ticket.
+</p>
+
+<h2>5. Conservación de los datos</h2>
+
+<p>
+La información permanecerá almacenada mientras el servidor decida conservar el historial de sus tickets.
+</p>
+
+<p>
+Los administradores podrán solicitar la eliminación de los datos asociados a sus tickets en cualquier momento.
+</p>
+
+<p>
+Algunos registros técnicos podrían permanecer temporalmente en copias de seguridad antes de ser eliminados automáticamente.
+</p>
+
+<h2>6. Quién puede acceder a la información</h2>
+
+<ul>
+<li>Administradores del servidor.</li>
+<li>Moderadores autorizados.</li>
+<li>El propietario de los bots, únicamente para mantenimiento, resolución de incidencias, investigaciones por abuso o cumplimiento de obligaciones legales.</li>
+</ul>
+
+<p>
+El propietario de los bots no revisa de forma habitual el contenido de los tickets y solo accederá a ellos cuando exista una razón legítima relacionada con el funcionamiento o la seguridad del servicio.
+</p>
+
+<h2>7. Servicios de terceros</h2>
+
+<ul>
+<li>Discord API</li>
+<li>MongoDB</li>
+<li>Cloudflare R2</li>
+</ul>
+
+<h2>8. Seguridad</h2>
+
+<p>
+Se aplican medidas técnicas y organizativas razonables para proteger la información frente a accesos no autorizados, alteraciones o pérdidas.
+</p>
+
+<p>
+Aunque ningún sistema puede garantizar una seguridad absoluta, se adoptan buenas prácticas para proteger los datos almacenados.
+</p>
+
+<h2>9. Derechos de los usuarios</h2>
+
+<p>
+Los administradores podrán solicitar la eliminación de la información asociada a sus servidores.
+</p>
+
+<p>
+Las consultas relacionadas con la privacidad o solicitudes de eliminación podrán enviarse a:
+</p>
+
+<p>
+
+<strong>
+<a href="mailto:raypubgm@juegoslevelup.com">
+raypubgm@juegoslevelup.com
+</a>
+</strong>
+
+</p>
+
+<h2>10. Privacidad de menores</h2>
+
+<p>
+Los bots funcionan exclusivamente dentro de Discord y no recopilan intencionadamente información personal de menores fuera de aquella que estos decidan compartir voluntariamente mediante un ticket.
+</p>
+
+<h2>11. Cambios en esta Política</h2>
+
+<p>
+Esta Política de Privacidad podrá actualizarse para reflejar cambios en el funcionamiento de los bots o por obligaciones legales.
+</p>
+
+<p>
+La fecha de última actualización será modificada cuando exista un cambio relevante.
+</p>
+
+<h2>12. Contacto</h2>
+
+<p>
+
+Para cualquier consulta relacionada con la privacidad:
+
+<br><br>
+
+<strong>
+<a href="mailto:raypubgm@juegoslevelup.com">
+raypubgm@juegoslevelup.com
+</a>
+</strong>
+
+</p>
+
+<footer>
+
+© 2026 ModMail. Todos los derechos reservados.
+
+</footer>
+
+</div>
+
+</div>
+
+</body>
+</html>
+```
