@@ -96,6 +96,8 @@ async def not_found(request, exc):
 async def index(request):
     return render_template("index")
 
+async def privacidad(request):  
+    return render_template("privacidad")  
 
 async def get_raw_logs_file(request, key):
     """Returns the plain text rendered log entry"""
@@ -124,6 +126,7 @@ async def get_logs_file(request, key):
 app.add_route(index, join_url_paths(base_url), methods=["GET"])
 app.add_route(get_raw_logs_file, join_url_paths(base_url, prefix, "raw/<key>"), methods=["GET"])
 app.add_route(get_logs_file, join_url_paths(base_url, prefix, "<key>"), methods=["GET"])
+app.add_route(privacidad, join_url_paths(base_url, "privacidad"), methods=["GET"])
 
 
 if __name__ == "__main__":
